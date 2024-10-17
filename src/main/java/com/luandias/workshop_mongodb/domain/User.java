@@ -3,10 +3,15 @@ package com.luandias.workshop_mongodb.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private Long id;
 	private String name;
 	private String email;
