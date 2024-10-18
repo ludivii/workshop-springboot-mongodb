@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.luandias.workshop_mongodb.domain.User;
 import com.luandias.workshop_mongodb.domain.repository.UserRepository;
+import com.luandias.workshop_mongodb.dto.UserDTO;
 import com.luandias.workshop_mongodb.servicies.exception.ObjectNotFoundException;
 
 @Service
@@ -24,5 +25,13 @@ public class UserService {
 		Optional<User> user = repo.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("Object not found!"));
 
+	}
+	
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO obj) {
+		return new User(obj.getId(), obj.getName(), obj.getEmail());
 	}
 }
